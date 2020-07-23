@@ -3,22 +3,6 @@
     max-width: calc(var(--max-container-width, 1200px) + (var(--content-padding, 20px) * 2));
     margin: 0 auto;
     padding: 0 var(--content-padding);
-
-    &--flex {
-        display: flex;
-    }
-
-    &--align-items-center {
-        align-items: center;
-    }
-
-    &--flex-direction-column {
-        flex-direction: column;
-    }
-
-    &--flex-grow {
-        flex-grow: 1;
-    }
 }
 
 .page-content {

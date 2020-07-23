@@ -45,7 +45,7 @@ gulp.task('handlebars', function () {
                 return JSON.parse(fs.readFileSync('./src/pages/data/' + path.basename(file.path).replace('.hbs', '.json')));
             })
         )
-        .pipe(hb().partials('./src/partials/components/**/*.hbs').partials('./src/partials/layouts/**/*.hbs').helpers(require('handlebars-layouts')))
+        .pipe(hb().data(JSON.parse(fs.readFileSync('./src/pages/data/global.json'))).partials('./src/partials/components/**/*.hbs').partials('./src/partials/layouts/**/*.hbs').helpers(require('handlebars-layouts')))
         .pipe(
             rename(function (path) {
                 path.extname = '.html';
@@ -97,7 +97,7 @@ gulp.task('serve', function () {
         port: 7000,
         ghostMode: false,
     });
-    gulp.watch('./src/**/*.hbs', gulp.series('handlebars'));
+    gulp.watch(['./src/**/*.hbs', './src/pages/data**/*.json'], gulp.series('handlebars'));
 
     gulp.watch('./src/img/icons/*svg', gulp.series('sprite', 'handlebars'));
 
