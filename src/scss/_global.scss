@@ -7,17 +7,16 @@
 }
 
 :root {
-    --max-container-width: 1240px;
-    --content-padding: 20px;
+    --max-container-width: 124rem;
+    --content-padding: 2rem;
     --primary-color: #13B17C;
-    --text-color: black;
 }
 
 html {
     box-sizing: border-box;
     font-size: 10px;
     -webkit-text-size-adjust: 100%;
-    line-height: 1.15;
+  
     @include noHighlight();
 }
 
@@ -29,7 +28,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: sans-serif;
-    color: var(--text-color);
+    color: black;
 }
 
 main {
@@ -112,22 +111,26 @@ button {
     user-select: none;
     -webkit-appearance: none;
     font: inherit;
+    color: inherit;
     outline: none;
     display: inline-block;
+    position: relative;
 }
 
 a {
     background-color: transparent;
     text-decoration: none;
+    transition: color .2s;
     &:link,
     &:visited {
-        color: var(--primary-color);
+        color: inherit;
     }
 }
 
 svg {
     flex-shrink: 0;
     fill: currentColor;
+    transition: fill .2s;
 }
 
 img {
@@ -149,6 +152,10 @@ table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
+}
+
+th {
+    font-weight: 400;
 }
 
 td, th {

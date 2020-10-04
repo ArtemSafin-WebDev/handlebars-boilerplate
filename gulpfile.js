@@ -8,8 +8,7 @@ const cssMinify = require('gulp-csso');
 const del = require('del');
 const newer = require('gulp-newer');
 const svgSprite = require('gulp-svg-sprite');
-const prettier = require('gulp-prettier');
-
+const debug = require('gulp-debug');
 const webpack = require('webpack');
 const webpackconfig = require('./webpack.config.js');
 const webpackstream = require('webpack-stream');
@@ -33,25 +32,29 @@ gulp.task('sprite', function () {
                 },
             })
         )
-      
         .pipe(gulp.dest('./src/partials/components'));
 });
 
 gulp.task('handlebars', function () {
     return gulp
         .src('./src/pages/**/*.hbs')
+        .pipe(debug({ title: 'handlebars compiler:' }))
         .pipe(
             data(function (file) {
-                return JSON.parse(fs.readFileSync('./src/pages/data/' + path.basename(file.path).replace('.hbs', '.json')));
+                try {
+                    const data = JSON.parse(fs.readFileSync('./src/pages/data/' + path.basename(file.path).replace('.hbs', '.json')));
+                    return data;
+                } catch (err) {
+                    return null;
+                }
             })
         )
-        .pipe(hb().data(JSON.parse(fs.readFileSync('./src/pages/data/global.json'))).partials('./src/partials/components/**/*.hbs').partials('./src/partials/layouts/**/*.hbs').helpers(require('handlebars-layouts')))
+        .pipe(hb().partials('./src/partials/components/**/*.hbs').partials('./src/partials/layouts/**/*.hbs').helpers(require('handlebars-layouts')))
         .pipe(
             rename(function (path) {
                 path.extname = '.html';
             })
         )
-        .pipe(prettier())
         .pipe(gulp.dest('build'))
         .pipe(browserSync.stream());
 });
