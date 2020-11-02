@@ -111,7 +111,7 @@ gulp.task('serve', function () {
 });
 
 gulp.task('images', function () {
-    return gulp.src('./src/img/**/*').pipe(newer('./build/img')).pipe(gulp.dest('./build/img')).pipe(browserSync.stream());
+    return gulp.src('./src/img/**/*').pipe(gulp.dest('./build/img')).pipe(browserSync.stream());
 });
 
 gulp.task('assets', function () {
