@@ -1,11 +1,11 @@
-import cssVars from 'css-vars-ponyfill';
-import lazySizes from 'lazysizes';
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
-import 'lazysizes/plugins/respimg/ls.respimg';
 
-if (!('object-fit' in document.createElement('a').style)) {
-    require('lazysizes/plugins/object-fit/ls.object-fit');
-}
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import smoothscroll from 'smoothscroll-polyfill';
+import 'custom-event-polyfill';
+import 'classlist-polyfill';
+
+smoothscroll.polyfill();
 
 export default function() {
     // Полифилл .contains для IE 11

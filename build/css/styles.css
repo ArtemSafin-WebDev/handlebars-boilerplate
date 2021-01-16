@@ -1,13 +1,13 @@
 /**
- * Swiper 6.3.2
+ * Swiper 6.4.5
  * Most modern mobile touch slider and framework with hardware accelerated transitions
- * http://swiperjs.com
+ * https://swiperjs.com
  *
  * Copyright 2014-2020 Vladimir Kharlampidi
  *
  * Released under the MIT License
  *
- * Released on: September 28, 2020
+ * Released on: December 18, 2020
  */
 @font-face {
   font-family: 'swiper-icons';
@@ -631,9 +631,9 @@ button.swiper-pagination-bullet {
   background-color: #EAEAEA;
   cursor: not-allowed;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none; }
+  -ms-user-select: none;
+  -moz-user-select: none;
+       user-select: none; }
 
 .choices.is-disabled .choices__item {
   cursor: not-allowed; }
@@ -874,9 +874,9 @@ button.swiper-pagination-bullet {
 .choices__item--disabled {
   cursor: not-allowed;
   -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+       user-select: none;
   opacity: .5; }
 
 .choices__heading {
@@ -1145,9 +1145,13 @@ select:-webkit-autofill:focus {
 
 .container {
   width: 100%;
-  max-width: calc(var(--max-container-width, 1200px) + (var(--content-padding, 20px) * 2));
+  max-width: calc(var(--max-container-width) + 2 * var(--content-padding));
   margin: 0 auto;
   padding: 0 var(--content-padding); }
+  @supports (width: max(20vw, 100px)) {
+    .container {
+      padding-left: max(env(safe-area-inset-left, 1.4rem), var(--content-padding));
+      padding-right: max(env(safe-area-inset-right, 1.4rem), var(--content-padding)); } }
 
 .page-content {
   -webkit-box-flex: 1;
