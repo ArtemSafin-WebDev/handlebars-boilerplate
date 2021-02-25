@@ -6,7 +6,6 @@
     @return m#{i}n(#{$numbers});
 }
 
-
 @mixin noHighlight() {
     -webkit-tap-highlight-color: transparent;
 }
@@ -38,7 +37,6 @@
     }
 }
 
-
 @mixin fullpageBG {
     position: relative;
     background: none;
@@ -65,6 +63,11 @@
     object-position: center top;
     font-family: 'object-fit: cover; object-position: center top;';
 }
+@mixin objectFitCoverBottom() {
+    object-fit: cover;
+    object-position: center bottom;
+    font-family: 'object-fit: cover; object-position: center bottom;';
+}
 
 @mixin objectFitContain() {
     object-fit: contain;
@@ -78,6 +81,11 @@
     font-family: 'object-fit: contain; object-position: center bottom;';
 }
 
+@mixin objectFitContainTop() {
+    object-fit: contain;
+    object-position: center top;
+    font-family: 'object-fit: contain; object-position: center top;';
+}
 
 @mixin noScrollbar {
     &::-webkit-scrollbar * {
@@ -92,6 +100,72 @@
     }
     &::-webkit-scrollbar-thumb {
         background-color: transparent;
+    }
+}
+
+@mixin customScrollbar {
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+        background-color: white;
+        width: 0.6rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+    }
+
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #f5f5f5;
+    }
+}
+
+@mixin mobileHorizontalScroll {
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-left: calc(-1 * var(--content-padding));
+    margin-right: calc(-1 * var(--content-padding));
+    position: relative;
+    padding-left: var(--content-padding);
+    padding-right: var(--content-padding);
+    white-space: nowrap;
+   
+
+    & > * {
+        flex-shrink: 0;
+    }
+    
+    &::after {
+        content: '';
+        width: var(--content-padding);
+        flex-shrink: 0;
+        height: 1px;
+    }
+}
+
+
+@mixin centeredAbsolute {
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+
+@mixin hiddenByDefault {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s, visibility 0s linear .3s;
+
+    &.active {
+        opacity: 1;
+        visibility: inherit;
+        transition: opacity .3s, visibility .3s;
     }
 }
 

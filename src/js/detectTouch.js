@@ -1,10 +1,10 @@
-import detectIt from 'detect-it';
+import { primaryInput } from 'detect-it';
 
 export default function() {
     
     // Определение тач устройств
 
-    if (detectIt.hasTouch) {
+    if (primaryInput === 'touch') {
         document.body.classList.remove('no-touch');
         document.body.classList.add('touch');
 

@@ -14,6 +14,7 @@ const webpackconfig = require('./webpack.config.js');
 const webpackstream = require('webpack-stream');
 const data = require('gulp-data');
 const hb = require('gulp-hb');
+const sourcemaps = require('gulp-sourcemaps');
 
 const fs = require('fs');
 const path = require('path');
@@ -63,12 +64,16 @@ gulp.task('styles', function () {
     return gulp
         .src('src/scss/styles.scss')
         .pipe(plumber())
+        .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(autoprefixer())
+       
         .pipe(gulp.dest('build/css'))
         .pipe(cssMinify())
         .pipe(rename('styles.min.css'))
+        .pipe(sourcemaps.write('./sourcemaps'))
         .pipe(gulp.dest('build/css'))
+       
         .pipe(browserSync.stream());
 });
 
