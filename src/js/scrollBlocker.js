@@ -1,7 +1,7 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
-import detectIt from 'detect-it';
+import { primaryInput } from 'detect-it';
 
-const isTouch = detectIt.hasTouch;
+const isTouch = primaryInput === 'touch';
 
 let state = {
     scrollLocked: false,

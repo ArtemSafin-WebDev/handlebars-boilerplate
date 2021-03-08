@@ -1126,6 +1126,49 @@ td, th {
   text-align: left;
   vertical-align: top; }
 
+.lazyload,
+.lazyloading {
+  opacity: 0; }
+
+.lazyloaded {
+  opacity: 1;
+  -webkit-transition: opacity 300ms;
+  transition: opacity 300ms; }
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap; }
+
+.swiper-slide {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.no-scroll {
+  overflow-y: scroll;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0; }
+  .no-scroll body {
+    height: auto;
+    overflow: hidden; }
+
 ::-moz-selection {
   color: white;
   background-color: var(--primary-color); }
