@@ -7,9 +7,10 @@
 }
 
 :root {
-    --max-container-width: 124rem;
-    --content-padding: 2rem;
+    --max-container-width: 140rem;
+    --content-padding: 6rem;
     --primary-color: #13B17C;
+    --text-color: black;
 }
 
 html {
@@ -21,14 +22,13 @@ html {
 }
 
 body {
-    min-width: 320px;
     font-size: 1.6rem;
     line-height: 1.2;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     font-family: sans-serif;
-    color: black;
+    color: var(--text-color);
 }
 
 main {
@@ -168,24 +168,10 @@ td, th {
     vertical-align: top;
 }
 
-.lazyload,
-.lazyloading {
-    opacity: 0;
-}
-.lazyloaded {
-    opacity: 1;
-    transition: opacity 300ms;
-}
+
 
 .visually-hidden {
     @include visuallyHidden();
-}
-
-.swiper-slide {
-    box-sizing: border-box;
-    height: auto;
-    display: flex;
-    flex-direction: column;
 }
 
 .no-scroll {
@@ -200,8 +186,6 @@ td, th {
         overflow: hidden;
     }
 }
-
-
 
 ::selection {
     color: white;

@@ -4,9 +4,11 @@ import detectTouch from './detectTouch';
 import setScrollbarWidth from './setScrollbarWidth';
 import validation from './validation';
 import customSelects from './customSelects';
-import phoneMask from './phoneMask';
-import onlyNumeric from './onlyNumeric';
+import masks from './masks';
 import fileUpload from './fileUpload';
+import anchorLinks from './anchorLinks';
+import mediaPlayer from './mediaPlayer';
+
 
 document.addEventListener('DOMContentLoaded', function() {
     polyfills();
@@ -14,12 +16,16 @@ document.addEventListener('DOMContentLoaded', function() {
     setScrollbarWidth();
     validation();
     customSelects();
-    phoneMask();
-    onlyNumeric();
+    masks();
     fileUpload();
+    anchorLinks();
+    accordions();
+    mediaPlayer();
+    modals();
+    datepicker();
 });
 
 window.addEventListener('load', function() {
     document.body.classList.add('loaded');
-    setTimeout(() => document.body.classList.add('animatable'), 300)
+    setTimeout(() => document.body.classList.add('animatable'), 300);
 })
