@@ -8,7 +8,9 @@ import masks from './masks';
 import fileUpload from './fileUpload';
 import anchorLinks from './anchorLinks';
 import mediaPlayer from './mediaPlayer';
-
+import datepicker from './datepicker';
+import accordions from './accordions';
+import modals from './modals';
 
 document.addEventListener('DOMContentLoaded', function() {
     polyfills();
