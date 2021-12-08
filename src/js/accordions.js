@@ -1,36 +1,37 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
 gsap.registerPlugin(ScrollTrigger);
 
 export default function accordions() {
-    const SPEED = 0.7;
+    const SPEED = 0.3;
 
-    const openAccordion = element => {
+    const openAccordion = (element) => {
         gsap.to(element, {
             height: 'auto',
             duration: SPEED,
-            onComplete: () => ScrollTrigger.refresh()
+            onComplete: () => ScrollTrigger.refresh(),
         });
     };
-    const closeAccordion = element => {
+    const closeAccordion = (element) => {
         gsap.to(element, {
             height: 0,
             duration: SPEED,
-            onComplete: () => ScrollTrigger.refresh()
+            onComplete: () => ScrollTrigger.refresh(),
         });
     };
 
-    const elements = Array.from(document.querySelectorAll('.js-accordion'));
+    document.addEventListener('click', (event) => {
+        if (event.target.matches('.js-accordion-btn') || event.target.closest('.js-accordion-btn')) {
+            const btn = event.target.matches('.js-accordion-btn') ? event.target : event.target.closest('.js-accordion-btn');
+            const element = btn.closest('.js-accordion');
+            const content = element.querySelector('.js-accordion-content');
+            const elements = Array.from(document.querySelectorAll('.js-accordion'));
 
-    elements.forEach(element => {
-        const btn = element.querySelector('.js-accordion-btn');
-        const content = element.querySelector('.js-accordion-content');
-
-        btn.addEventListener('click', event => {
             event.preventDefault();
 
             if (element.hasAttribute('data-close-other')) {
-                elements.forEach(otherElement => {
+                elements.forEach((otherElement) => {
                     if (otherElement !== element) {
                         if (otherElement.classList.contains('active')) {
                             const content = otherElement.querySelector('.js-accordion-content');
@@ -47,6 +48,6 @@ export default function accordions() {
                 openAccordion(content);
             }
             element.classList.toggle('active');
-        });
+        }
     });
 }

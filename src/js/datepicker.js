@@ -8,7 +8,7 @@ export default function datepicker() {
         $(element)
             .datepicker({
                 format: 'dd.mm.yyyy',
-                container: '#picker-container',
+                container: element.hasAttribute('data-picker-container') ? element.getAttribute('data-picker-container') : '#picker-container',
                 language: 'ru',
                 autoclose: true
             })

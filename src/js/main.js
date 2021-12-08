@@ -12,7 +12,12 @@ import datepicker from './datepicker';
 import accordions from './accordions';
 import modals from './modals';
 
-document.addEventListener('DOMContentLoaded', function() {
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+document.addEventListener('DOMContentLoaded', function () {
     polyfills();
     detectTouch();
     setScrollbarWidth();
@@ -27,7 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
     datepicker();
 });
 
-window.addEventListener('load', function() {
+document.addEventListener('lazyloaded', () => {
+    ScrollTrigger.refresh();
+});
+
+window.addEventListener('load', function () {
     document.body.classList.add('loaded');
+    ScrollTrigger.refresh();
     setTimeout(() => document.body.classList.add('animatable'), 300);
-})
+});
