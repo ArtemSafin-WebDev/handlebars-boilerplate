@@ -6,9 +6,9 @@ gsap.registerPlugin(ScrollToPlugin);
 export default function anchorLinks() {
     const OFFSET = 80;
     const DURATION = 2;
-    const scrollByHash = (hash) => {
+    const scrollByHash = hash => {
         const elementToScroll = document.querySelector(hash);
-        if (elementToScroll) {
+        if (elementToScroll && !elementToScroll.matches('.js-modal')) {
             if (window.menuOpen && typeof window.closeMenu === 'function') {
                 window.closeMenu();
             } else if (window.activeModal && typeof window.closeModal === 'function') {
@@ -21,14 +21,14 @@ export default function anchorLinks() {
                 scrollTo: {
                     y: elementToScroll,
                     autoKill: false,
-                    offsetY: OFFSET,
-                },
+                    offsetY: OFFSET
+                }
             });
         } else {
             console.error('No element to scroll');
         }
     };
-    document.addEventListener('click', (event) => {
+    document.addEventListener('click', event => {
         if (event.target.matches('a') || event.target.closest('a')) {
             const link = event.target.matches('a') ? event.target : event.target.closest('a');
             const hash = link.hash;
