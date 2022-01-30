@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     mediaPlayer();
     modals();
     datepicker();
+
 });
 
 document.addEventListener('lazyloaded', () => {
