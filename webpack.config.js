@@ -1,5 +1,4 @@
 const path = require('path')
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -27,10 +26,5 @@ module.exports = {
   mode: 'development',
   externals: {
     jquery: 'jQuery'
-  },
-  plugins: [
-    new MomentLocalesPlugin({
-      localesToKeep: ['es-us', 'ru']
-    })
-  ]
+  }
 }

@@ -4,8 +4,9 @@ import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 gsap.registerPlugin(ScrollToPlugin);
 
 export default function anchorLinks() {
-    const OFFSET = 80;
-    const DURATION = 2;
+    const pageHeader = document.querySelector('.page-header');
+    const offset = pageHeader ? pageHeader.offsetHeight : 80;
+    const DURATION = 1.4;
     const scrollByHash = hash => {
         const elementToScroll = document.querySelector(hash);
         if (elementToScroll && !elementToScroll.matches('.js-modal')) {
@@ -21,7 +22,7 @@ export default function anchorLinks() {
                 scrollTo: {
                     y: elementToScroll,
                     autoKill: false,
-                    offsetY: OFFSET
+                    offsetY: offset
                 }
             });
         } else {

@@ -7,8 +7,6 @@ dayjs.extend(customParseFormat);
 window.Parsley.addValidator('requiredIfChecked', {
     requirementType: 'string',
     validateString: function (value, requirement) {
-        console.log('Validating', value);
-
         const checkbox = document.querySelector(requirement);
 
         if (!checkbox) {

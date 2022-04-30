@@ -17,6 +17,9 @@ export default function datepicker() {
             })
             .on('hide', function(e) {
                 element.classList.remove('datepicker-shown');
+            })
+            .on('changeDate', function(e) {
+                $(element).trigger('blur');
             });
     });
 }

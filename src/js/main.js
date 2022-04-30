@@ -1,36 +1,28 @@
-import polyfills from './polyfills';
 import './lazyload';
 import detectTouch from './detectTouch';
 import setScrollbarWidth from './setScrollbarWidth';
-import validation from './validation';
-import customSelects from './customSelects';
 import masks from './masks';
-import fileUpload from './fileUpload';
+import validation from './validation';
 import anchorLinks from './anchorLinks';
-import mediaPlayer from './mediaPlayer';
-import datepicker from './datepicker';
 import accordions from './accordions';
 import modals from './modals';
-
+import tabs from './tabs';
+import menu from './menu';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 document.addEventListener('DOMContentLoaded', function () {
-    polyfills();
     detectTouch();
     setScrollbarWidth();
-    validation();
-    customSelects();
     masks();
-    fileUpload();
+    validation();
     anchorLinks();
     accordions();
-    mediaPlayer();
     modals();
-    datepicker();
-
+    tabs();
+    menu();
 });
 
 document.addEventListener('lazyloaded', () => {
