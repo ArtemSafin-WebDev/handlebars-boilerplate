@@ -4,21 +4,23 @@ export default function menu() {
     const burger = document.querySelector('.page-header__burger');
     const menu = document.querySelector('.page-header__burger-menu');
 
-    let menuOpen = false;
+    window.menuOpen = false;
 
     if (!burger || !menu) return;
 
     const openMenu = () => {
-        if (menuOpen) return;
+        if (window.menuOpen) return;
         document.body.classList.add('mobile-menu-open');
-        disableBodyScroll(menu);
-        menuOpen = true;
+        disableBodyScroll(menu, {
+            reserveScrollBarGap: true
+        });
+        window.menuOpen = true;
     };
     const closeMenu = () => {
-        if (!menuOpen) return;
+        if (!window.menuOpen) return;
         document.body.classList.remove('mobile-menu-open');
         clearAllBodyScrollLocks();
-        menuOpen = false;
+        window.menuOpen = false;
     };
 
     window.openMenu = openMenu;
@@ -26,11 +28,10 @@ export default function menu() {
 
     burger.addEventListener('click', event => {
         event.preventDefault();
-        if (!menuOpen) {
+        if (!window.menuOpen) {
             openMenu();
         } else {
             closeMenu();
         }
     });
-
 }
